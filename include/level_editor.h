@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 20:07:34 by dfeve             #+#    #+#             */
-/*   Updated: 2025/04/16 02:25:55 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/04/16 18:21:48 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,11 @@
 # include "../lib/minilibx/mlx.h"
 # include <stdlib.h>
 # include <stdio.h>
+# include <readline/readline.h>
+# include <readline/history.h>
+# include <fcntl.h>
 # include "utils.h"
 # include "../lib/libft/libft.h"
-
-typedef enum
-{
-	RIEN = 1,
-	PION_B,
-	TOUR_B,
-	CHEV_B,
-	FOU_B,
-	REIN_B,
-	ROI_B,
-	PION_N,
-	TOUR_N,
-	CHEV_N,
-	FOU_N,
-	REIN_N,
-	ROI_N
-}	t_piece;
 
 typedef struct s_img
 {
@@ -57,6 +43,8 @@ typedef struct s_mlx
 	void			*mlx;
 	void			*win;
 	t_object_list	*obj_list;
+	char			**board;
+	t_vector2		board_size;
 	t_img			imgs[50000];
 }	t_mlx;
 

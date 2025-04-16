@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 20:33:25 by dfeve             #+#    #+#             */
-/*   Updated: 2025/04/16 02:03:58 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/04/16 18:19:55 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ typedef struct s_object
 	int				value;
 	int				color;
 	void			(*clickFunc)(void *, int);
-	struct s_object	*victim;
+	void			*victim;
 }	t_object;
 
 typedef struct s_object_list
@@ -117,8 +117,11 @@ t_vector2		div_vec2(t_vector2 vec1, t_vector2 divi);
 
 void			check_if_obj_clicked(t_vector2 mouse_pos, t_object_list *lst);
 void			add_obj_to_list(t_object_list **lst, t_object *obj);
-t_object		*create_obj(int type, void (*onClick)(void *, int), int value, t_vector2 pos, t_vector2 size, int color, char *tag, t_object *victim);
+t_object		*create_obj(int type, void (*onClick)(void *, int), int value, t_vector2 pos, t_vector2 size, int color, char *tag, void *victim);
 t_object_list	*get_last_object(t_object_list *start);
 void			free_object_list(t_object_list *start);
+void			board_clicked(t_vector2 mouse_pos, t_vector2 board_size, char **board);
+
+void			free_tab(char **tab, t_vector2 tab_size);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 20:19:13 by dfeve             #+#    #+#             */
-/*   Updated: 2025/04/16 02:29:19 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/04/16 18:19:43 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,17 @@ int	abs(int x)
 	if (x < 0)
 		return (x * -1);
 	return (x);
+}
+
+void	free_tab(char **tab, t_vector2 tab_size)
+{
+	int cursor;
+
+	cursor = 0;
+	while (cursor < tab_size.y)
+	{
+		free(tab[cursor]);
+		cursor++;
+	}
+	free(tab);
 }

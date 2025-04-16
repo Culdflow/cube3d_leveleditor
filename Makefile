@@ -20,7 +20,7 @@ OBJS = ${CFILES:.c=.o}
 all: ${NAME}
 
 ${NAME}: ${OBJS}
-	$(CC) ${CFLAGS} $(OBJS) -L./lib/libft -lft -L./lib/minilibx -lmlx -L/usr/lib -Iminilibx -lXext -lX11 -lm -lz -o $(NAME)
+	$(CC) ${CFLAGS} $(OBJS) -L./lib/libft -lft -L./lib/minilibx -lmlx -L/usr/lib -Iminilibx -lreadline -lXext -lX11 -lm -lz -o $(NAME)
 
 fclean:	clean
 	rm -rf ${NAME}

@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 00:17:25 by dfeve             #+#    #+#             */
-/*   Updated: 2025/04/16 02:29:08 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/04/16 17:41:43 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,11 @@ void	add_image(t_mlx *mlx, t_img img)
 	int	nb_images;
 
 	nb_images = count_images(mlx);
+	printf("nb image = %d\n", nb_images);
 	mlx->imgs[nb_images] = img;
 	mlx->imgs[nb_images + 1].img = NULL;
+	nb_images = count_images(mlx);
+	printf("nb image = %d\n", nb_images);
 }
 
 void	del_images(t_mlx *mlx)

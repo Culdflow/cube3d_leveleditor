@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 20:16:16 by dfeve             #+#    #+#             */
-/*   Updated: 2025/04/16 02:29:26 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/04/16 17:38:05 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,7 @@ void	draw_object_list(t_mlx *mlx, t_object_list *obj_lst)
 {
 	while (obj_lst)
 	{
+		printf("drawing object wth value %d\n", obj_lst->object->value);
 		draw_object(mlx, obj_lst->object);
 		obj_lst = obj_lst->next;
 	}
