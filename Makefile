@@ -1,5 +1,6 @@
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra -g 
+# -fsanitize=address
 NAME = cube3d_level_editor
 CFILES = srcs/main.c \
 \

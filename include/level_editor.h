@@ -6,7 +6,7 @@
 /*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 20:07:34 by dfeve             #+#    #+#             */
-/*   Updated: 2025/04/16 18:21:48 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/04/19 02:19:49 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,9 @@ typedef struct s_mlx
 	void			*win;
 	t_object_list	*obj_list;
 	char			**board;
+	int				is_clicking;
 	t_vector2		board_size;
+	char			turning_to;
 	t_img			imgs[50000];
 }	t_mlx;
 
