@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mabdessm <mabdessm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 20:16:16 by dfeve             #+#    #+#             */
-/*   Updated: 2025/04/16 17:38:05 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/04/23 22:59:36 by mabdessm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,8 @@ void	draw_board(t_mlx *mlx, int	color1, char **board, t_vector2 board_size)
 				draw_rectangle_no_fill(&mlx->imgs[0], add_vec2(start, vec2(20, 20)), add_vec2(end, vec2(20, 20)), color1);
 			else if (board[cursor.y][cursor.x] == '1')
 				draw_rectangle(&mlx->imgs[0], add_vec2(start, vec2(20, 20)), add_vec2(end, vec2(20, 20)), color1);
+			else if (board[cursor.y][cursor.x] == 'N')
+				draw_rectangle(&mlx->imgs[0], add_vec2(start, vec2(20, 20)), add_vec2(end, vec2(20, 20)), 0xFF0000);
 			cursor.x++;
 		}
 		cursor.y++;

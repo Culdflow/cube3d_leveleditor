@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mabdessm <mabdessm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 20:07:12 by dfeve             #+#    #+#             */
-/*   Updated: 2025/04/19 02:34:01 by dfeve            ###   ########.fr       */
+/*   Updated: 2025/04/23 23:00:45 by mabdessm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,19 @@
 
 int	_input(int keycode, t_mlx *mlx)
 {
+	(void)mlx;
+	mlx->turning_to = '1';
 	if (keycode == K_ESC)
-		mlx_loop_end(mlx->mlx);
+		exit(0);
+	if (keycode == K_X)
+		mlx->turning_to = 'N';
+	return (1);
+}
+
+int	fun_exit(t_mlx *mlx)
+{
+	(void)mlx;
+	exit(0);
 	return (1);
 }
 
@@ -50,6 +61,16 @@ int	_input_mouse_board(int keycode, int x, t_mlx *mlx)
 		draw_board(mlx, 0xFFFFFF, mlx->board, mlx->board_size);
 		put_imgs(mlx);
 		draw_object_list(mlx, mlx->obj_list);
+	}
+	else if(mlx->turning_to == 'N')
+	{
+		del_images(mlx);
+		board_clicked(pos, mlx->board_size, mlx->board, mlx->turning_to);
+		new_image(mlx, vec2(1920, 1080), vec2(0, 0));
+		draw_board(mlx, 0xFFFFFF, mlx->board, mlx->board_size);
+		put_imgs(mlx);
+		draw_object_list(mlx, mlx->obj_list);
+		mlx->turning_to = '1';
 	}
 	return (1);
 }
@@ -168,7 +189,7 @@ int	main()
 	draw_object_list(mlx, mlx->obj_list);
 	mlx_hook(mlx->win, ON_KEYDOWN, 1L << 0, _input, mlx);
 	mlx_mouse_hook(mlx->win, _input_mouse, mlx);
-	mlx_hook(mlx->win, ON_DESTROY, 0, mlx_loop_end, mlx->mlx);
+	mlx_hook(mlx->win, ON_DESTROY, 0, fun_exit, mlx->mlx);
 	put_imgs(mlx);
 	draw_object_list(mlx, mlx->obj_list);
 	mlx_loop(mlx->mlx);
@@ -192,7 +213,7 @@ int	main()
 	new_image(mlx, vec2(1920, 1080), vec2(0, 0));
 	draw_board(mlx, 0xFFFFFF, mlx->board, mlx->board_size);
 	add_obj_to_list(&mlx->obj_list, create_obj(BUTTON, mlx_loop_end_signal, 5, vec2(1750, 450), vec2(50, 25), 0xFFFFFF, "SUBMIT", mlx));
-	mlx_hook(mlx->win, ON_DESTROY, 0, mlx_loop_end, mlx->mlx);
+	mlx_hook(mlx->win, ON_DESTROY, 0, fun_exit, mlx->mlx);
 	put_imgs(mlx);
 	draw_object_list(mlx, mlx->obj_list);
 	mlx_hook(mlx->win, ON_KEYDOWN, 1L << 0, _input, mlx);
