@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabdessm <mabdessm@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dfeve <dfeve@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/16 20:07:12 by dfeve             #+#    #+#             */
-/*   Updated: 2025/04/23 23:00:45 by mabdessm         ###   ########.fr       */
+/*   Updated: 2025/05/13 18:24:04 by dfeve            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,16 +62,6 @@ int	_input_mouse_board(int keycode, int x, t_mlx *mlx)
 		put_imgs(mlx);
 		draw_object_list(mlx, mlx->obj_list);
 	}
-	else if(mlx->turning_to == 'N')
-	{
-		del_images(mlx);
-		board_clicked(pos, mlx->board_size, mlx->board, mlx->turning_to);
-		new_image(mlx, vec2(1920, 1080), vec2(0, 0));
-		draw_board(mlx, 0xFFFFFF, mlx->board, mlx->board_size);
-		put_imgs(mlx);
-		draw_object_list(mlx, mlx->obj_list);
-		mlx->turning_to = '1';
-	}
 	return (1);
 }
 
@@ -86,16 +76,16 @@ int	_input_mouse_click_down(int keycode, int x, int y, t_mlx *mlx)
 		check_if_obj_clicked(pos, mlx->obj_list);
 		el = get_el_from_board(pos, mlx->board_size, mlx->board);
 		mlx->is_clicking = TRUE;
-		if (el == '1')
-			mlx->turning_to = '0';
-		else
-			mlx->turning_to = '1';
 		del_images(mlx);
 		board_clicked(pos, mlx->board_size, mlx->board, mlx->turning_to);
 		new_image(mlx, vec2(1920, 1080), vec2(0, 0));
 		draw_board(mlx, 0xFFFFFF, mlx->board, mlx->board_size);
 		put_imgs(mlx);
 		draw_object_list(mlx, mlx->obj_list);
+		if (el != '0' || mlx->turning_to != '0')
+			mlx->turning_to = '0';
+		else
+			mlx->turning_to = '1';
 	}
 	return (1);
 }
